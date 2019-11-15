@@ -1,7 +1,15 @@
-<%= simple_form_for [@cocktail, @dose] do |c| %>
-  <%= c.input :description, collection: ["1 part", "2 parts", "4 parts", "A handful glass"] %>
-  <%= c.association :ingredient %>
-  <%= c.submit "add a dose", class: "btn btn-secondary" %>
-<% end %>
+<%= render 'components/navbar' %>
+<div>
+  <h1 class="text-center mt-2 m-0 text-align-center banner text-white">New dose</h1>
+</div>
 
-<%= link_to 'Back', cocktails_path, class: "btn btn-secondary"%>
+<div class="col-12 mt-3 mb-5 text-center">
+  <%= simple_form_for [@cocktail, @dose] do |c| %>
+    <%= c.input :description, collection: ["1 part", "2 parts", "4 parts", "A handful glass"] %>
+    <%= c.association :ingredient %>
+    <%= c.submit "Add a dose", class: "btn btn-flat m-2" %>
+  <% end %>
+  <%= link_to 'Back', cocktails_path, class: "btn btn-secondary"%>
+</div>
+
+

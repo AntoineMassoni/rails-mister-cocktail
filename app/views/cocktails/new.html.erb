@@ -1,6 +1,16 @@
+<%= render 'components/navbar' %>
+<div>
+  <h1 class="text-center mt-2 m-0 text-align-center banner text-white">New cocktail</h1>
+</div>
+
+<div class="col-12 mt-3 mb-5 text-center">
 <%= simple_form_for @cocktail do |c| %>
   <%= c.input :name %>
-  <%= c.input :photo %>
+  <div class="d-flex flex-column align-items-center m-0 text-align-center">
+    <%= c.input :photo %>
+  </div>
   <%= c.input :photo_cache, as: :hidden %>
-  <%= c.submit "Add a cocktail", class: "btn btn-primary" %>
+  <%= c.submit "Add a cocktail", class: "btn btn-secondary" %>
 <% end %>
+<%= link_to 'Back', cocktails_path, class: "btn btn-secondary mt-2 mb-2"%>
+</div>

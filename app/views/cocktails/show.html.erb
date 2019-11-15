@@ -1,20 +1,28 @@
-<h1><%= @cocktail.name %></h1>
-<%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
+<%= render 'components/navbar'%>
+<div class="row">
+<div class="col-sm-12 col-md-12 col-lg-12 mt-3 mb-5 " >
+ <div class="banner m-0" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @cocktail.photo %>)">
+   <h1 class="text-center"><%= @cocktail.name%></h1>
+ </div>
+</div>
 
-<% @cocktail.doses.each do |dose|%>
-<h3><%= dose.description %></h3>
-<ul>
-  <li><%= dose.ingredient.name %></li>
-  </ul>
-  <%= link_to "Delete", dose_path(dose),
-      method: :delete,
-      data: { confirm: "Are you sure?" }, class: "btn btn-warning" %>
-<% end %>
+</div>
+
+<div class=" col-12 d-flex flex-column text-center">
+  <% @cocktail.doses.each do |dose|%>
+    <h3><%= dose.description %></h3>
+    <p><%= dose.ingredient.name %></p>
+      </ul>
+      <%= link_to "Delete", dose_path(dose),
+          method: :delete,
+          data: { confirm: "Are you sure?" }, class: "btn btn-warning" %>
+  <% end %>
+  <%= link_to 'Add a dose', new_cocktail_dose_path(@cocktail), class: "btn btn-flat mt-2 mb-2"%>
+<%= link_to 'Back', cocktails_path, class: "btn btn-secondary mb-2"%>
 <p></p>
 
-<%= link_to 'Add a dose', new_cocktail_dose_path(@cocktail), class: "btn btn-secondary"%>
-<%= link_to 'Edit', edit_cocktail_path(@cocktail), class: "btn btn-secondary"%>
-<%= link_to 'Back', cocktails_path, class: "btn btn-secondary"%>
+</div>
+
 
 
 
